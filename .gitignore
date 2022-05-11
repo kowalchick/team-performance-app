@@ -21,3 +21,30 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+### Node ###
+# Logs
+logs
+*.log
+node_modules/
+.sass-cache/
+
+### OSX ###
+.AppleDouble
+.LSOverride
+
+### Linux ###
+*~
+
+### Code ###
+# Visual Studio Code - https://code.visualstudio.com/
+.settings/
+.vscode/
+
+### Webstorm ###
+.idea/
+
+### Other ###
+.test/
+.solution
+_config.yml
