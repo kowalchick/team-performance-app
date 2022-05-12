@@ -4,6 +4,7 @@ import './App.css';
 import Welcome from "./components/Welcome";
 import Questions from "./components/Questions";
 import surveyData from "./data/db.json";
+import Results from "./components/Results";
 
 const App = () => {
     const [step, setStep] = useState(1);
@@ -25,7 +26,13 @@ const App = () => {
             onSetActiveQuestion={setActiveQuestion}
             onSetStep={setStep}
         />}
-
+        {step === 3 && <Results
+            data={surveyData.data[activeQuestion]}
+            numberOfQuestion={surveyData.data.length}
+            activeQuestion={activeQuestion}
+            onSetActiveQuestion={setActiveQuestion}
+            onSetStep={setStep}
+            />}
     </div>
   );
 }
