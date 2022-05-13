@@ -32,6 +32,7 @@ const SuccessSlider = styled(Slider)(({ theme }) => ({
         fontFamily: `'Montserrat', sans-serif `,
         fontWeight:`bold`,
         fontSize: `1.125rem`,
+        paddingTop: `20px`,
         color: `${alpha(myTheme.palette.secondary.main,0.8)}`
     },
     "& .MuiSlider-thumb": {
@@ -50,12 +51,12 @@ const SuccessSlider = styled(Slider)(({ theme }) => ({
 
 const marks = [
     {
-        value: 0,
-        label: 'I strongly agree',
+        value: 100,
+        label: 'I strongly agree 👍',
     },
     {
-        value: 100,
-        label: 'I strongly disagree',
+        value: 0,
+        label: 'I strongly disagree 👎',
     },
 ];
 
@@ -95,29 +96,30 @@ const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onS
         <div className="card">
             <div className="card-content">
                 <div className="content">
-                    <h2 className="mb-5">{data.question}</h2>
-                    <div className="control" ref={inputWrapper}>
-                        <Box sx={{
-                            display: 'inline-block',
-                        }}>
-                            <SuccessSlider
-                                aria-label="Custom marks"
-                                defaultValue={50}
-                                getAriaValueText={valuetext}
-                                step={1}
-                                valueLabelDisplay="auto"
-                                marks={marks}
-                                onChange={changeHandler}
-                                aria-labelledby="input-slider"
-                                value={selected? selected : 50}
-                            />
-                        </Box>
+                    <h2 className="question-title">{data.question}</h2>
+                    <div className="content-box">
+                        <div className="control" ref={inputWrapper}>
+                            <Box sx={{
+                                display: 'inline-block',
+                            }}>
+                                <SuccessSlider
+                                    aria-label="Custom marks"
+                                    defaultValue={50}
+                                    getAriaValueText={valuetext}
+                                    step={1}
+                                    valueLabelDisplay="auto"
+                                    marks={marks}
+                                    onChange={changeHandler}
+                                    aria-labelledby="input-slider"
+                                    value={selected? selected : 50}
+                                />
+                            </Box>
                             {/*<label className="radio has-background-light">*/}
                             {/*    <input type="radio" name="answer" value="" />*/}
                             {/*</label>*/}
+                        </div>
                     </div>
-                    {/*{error && <div className="has-text-danger">{error}</div>}*/}
-                    <button className="button is-rounded" onClick={nextClickHandler}>Next question</button>
+                    <button className="btn" onClick={nextClickHandler}>Next question</button>
                 </div>
             </div>
         </div>

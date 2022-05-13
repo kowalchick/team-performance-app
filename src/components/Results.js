@@ -5,15 +5,12 @@ const Results = ({onAnswersCheck}) => {
         <div className="card">
             <div className="card-content">
                 <div className="content">
-                    <h2 className="title">Thank you for your time</h2>
-                    <h3 style={{
-                        color: "rgba(30, 1, 8, 0.7)",
-                        fontSize: "1.75rem",
-                        fontWeight: 500
-                    }}>Find your results below
-                    </h3>
-                    <p><strong>text</strong></p>
-                    <button className="button is-rounded" onClick={onAnswersCheck}>Sent results to my email</button>
+                    <h1 className="thanks">Thank you for your time ❤️</h1>
+                    <div className='content-box'>
+                        <h2 className="thanks-subtitle">Find your results below</h2>
+                        <p><strong>text</strong></p>
+                    </div>
+                    <button className="btn" onClick={onAnswersCheck}>Send results to my email</button>
                 </div>
             </div>
         </div>
