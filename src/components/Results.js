@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import {Chart} from "./Chart";
+
 
 
 const Results = ({onAnswersCheck}) => {
@@ -13,7 +15,7 @@ const Results = ({onAnswersCheck}) => {
                     </h1>
                     <div className='content-box'>
                         <h2 className="thanks-subtitle">Find your results below</h2>
-                        <p><strong>text</strong></p>
+                        <Chart/>
                     </div>
                     <button className="btn" onClick={onAnswersCheck}>Send results to my email</button>
                 </div>
