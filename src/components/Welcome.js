@@ -1,11 +1,15 @@
 import React from 'react';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 
 const Welcome = ({onSurveyStart}) => {
     return(
         <div className="card">
             <div className="card-content">
                 <div className="content">
-                    <h1 className="fancy">Welcome 🙌</h1>
+                    <h1 className="fancy">
+                        Welcome
+                        <EmojiEmotionsIcon sx={{ color: "#EE3A68", paddingLeft:"10px" }} />
+                    </h1>
                     <div className="content-box">
                         <h2 className="title">We Put You First</h2>
                         <p className="description">

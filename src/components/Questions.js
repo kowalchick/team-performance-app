@@ -5,6 +5,9 @@ import Slider from '@mui/material/Slider';
 import { alpha, styled } from "@mui/material/styles";
 import { createTheme } from '@mui/material/styles';
 
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+
 const myTheme = createTheme({
     palette: {
         primary: {
@@ -52,11 +55,11 @@ const SuccessSlider = styled(Slider)(({ theme }) => ({
 const marks = [
     {
         value: 100,
-        label: 'I strongly agree 👍',
+        label: 'I strongly agree',
     },
     {
         value: 0,
-        label: 'I strongly disagree 👎',
+        label: 'I strongly disagree',
     },
 ];
 
