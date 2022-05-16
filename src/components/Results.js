@@ -10,7 +10,7 @@ const Results = ({onAnswersCheck}) => {
         fetch("http://localhost:3001/data", { method: "GET", redirect: "follow" })
             .then((res) => res.json())
             .then((json) => {
-                console.log(json);
+                // console.log(json);
                 setData(json);
             })
             .catch((err) => console.log(err));
