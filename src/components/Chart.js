@@ -1,34 +1,98 @@
-import React from 'react';
+import React from "react";
 import {
     Chart as ChartJS,
-    RadialLinearScale,
-    ArcElement,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
     Tooltip,
     Legend,
-} from 'chart.js';
-import { PolarArea } from 'react-chartjs-2';
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
-ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
-export function Chart() {
+function Chart(props) {
+    const legendMargin = {
+        id: 'legendMargin',
+        beforeInit(chart, legend, options) {
+            const fitValue = chart.legend.fit;
+
+            chart.legend.fit = function fit (){
+                console.log(chart.legend.fit);
+                fitValue.bind(chart.legend)();
+                return this.height += 200;
+            }
+
+        }
+    }
+    const options = {
+        scales: {
+            x: {
+                ticks: {
+                    font: {
+                        family: "'Montserrat', sans-serif",
+                    }
+                }
+            },
+            y: {
+                ticks: {
+                    font: {
+                        family: "'Montserrat', sans-serif",
+                    }
+                }
+            }
+        },
+        responsive: true,
+        plugins: {
+            legendMargin,
+            legend: {
+                position: "top",
+                labels: {
+                    font: {
+                        family: "'Montserrat', sans-serif",
+                    }
+                }
+            },
+            tooltip: {
+                callbacks: {
+                    title: (context)=>{
+                        return context[0].label.replaceAll(',',' ');
+                    }
+                }
+            },
+        },
+    };
+
     const data = {
-        labels: [
-            'If you make a mistake on this team. It is often hold against you',
-            'It is safe to take a risk on this team',
-            'Working with members of this team, my unique skills and talents are valued and utilized'
-        ],
+        labels: props.labels,
         datasets: [
             {
-                label: '# of Votes',
-                data: [100, 50, 75],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(153, 102, 255, 0.5)'
-                ],
-                borderWidth: 1,
+                label: "My answers",
+                data: props.data1,
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+            },
+            {
+                label: "My team answers",
+                data: props.data2,
+                backgroundColor: "rgba(53, 162, 235, 0.5)",
             },
         ],
     };
-    return <PolarArea data={data} />;
+    return (
+        <>
+            <div>
+                <Bar options={options} data={data} />
+            </div>
+        </>
+    );
 }
+
+export default Chart;

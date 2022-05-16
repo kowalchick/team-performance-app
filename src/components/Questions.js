@@ -5,9 +5,6 @@ import Slider from '@mui/material/Slider';
 import { alpha, styled } from "@mui/material/styles";
 import { createTheme } from '@mui/material/styles';
 
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-
 const myTheme = createTheme({
     palette: {
         primary: {
@@ -70,7 +67,7 @@ function valuetext(value: number) {
 
 const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onSetActiveQuestion, onSetStep}) => {
 
-    const [selected, setSelected] = useState(''); //value, setValue
+    const [selected, setSelected] = React.useState(50); //value, setValue
     // const [error, setError] = useState('');
     const inputWrapper = useRef();
 
@@ -81,13 +78,13 @@ const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onS
         }
     }, [data]);
 
-    const changeHandler = (event, newSelection) => {
+    const handleChange = (event, newSelection) => {
         setSelected(newSelection);
     }
 
     const nextClickHandler = (e) => {
         onAnswerUpdate(prevState => [...prevState, { q: data.question, a: selected }]);
-        setSelected('');
+        setSelected(50);
         if(activeQuestion < numberOfQuestions - 1) {
             onSetActiveQuestion(activeQuestion + 1);
         } else {
@@ -108,13 +105,13 @@ const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onS
                                 <SuccessSlider
                                     aria-label="Custom marks"
                                     defaultValue={50}
+                                    value={selected}
                                     getAriaValueText={valuetext}
                                     step={1}
                                     valueLabelDisplay="auto"
                                     marks={marks}
-                                    onChange={changeHandler}
+                                    onChange={handleChange}
                                     aria-labelledby="input-slider"
-                                    value={selected? selected : 50}
                                 />
                             </Box>
                             {/*<label className="radio has-background-light">*/}
