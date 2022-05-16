@@ -7,10 +7,9 @@ const Results = ({onAnswersCheck}) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3001/data", { method: "GET", redirect: "follow" })
+        fetch("http://localhost:3001/dataAnswers", { method: "GET", redirect: "follow" })
             .then((res) => res.json())
             .then((json) => {
-                // console.log(json);
                 setData(json);
             })
             .catch((err) => console.log(err));

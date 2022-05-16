@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(cors());
 
 //data
-const data = [
+const dataAnswers = [
     {
         labels: [
             ['If you make a mistake', 'on this team.', 'It is often', 'hold against you'],
@@ -24,8 +24,8 @@ const data = [
     },
 ];
 
-app.get("/data", (req, res) => {
-    res.json(data);
+app.get("/dataAnswers", (req, res) => {
+    res.json(dataAnswers);
 });
 
 app.listen(3001, function () {

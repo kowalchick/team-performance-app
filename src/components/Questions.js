@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useEffect, useRef} from "react";
 
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -68,7 +68,6 @@ function valuetext(value: number) {
 const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onSetActiveQuestion, onSetStep}) => {
 
     const [selected, setSelected] = React.useState(50); //value, setValue
-    // const [error, setError] = useState('');
     const inputWrapper = useRef();
 
     useEffect(() => {
@@ -114,9 +113,6 @@ const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onS
                                     aria-labelledby="input-slider"
                                 />
                             </Box>
-                            {/*<label className="radio has-background-light">*/}
-                            {/*    <input type="radio" name="answer" value="" />*/}
-                            {/*</label>*/}
                         </div>
                     </div>
                     <button className="btn" onClick={nextClickHandler}>Next question</button>

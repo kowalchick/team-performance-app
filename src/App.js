@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import './App.css';
 
 import Welcome from "./components/Welcome";
@@ -27,6 +27,7 @@ const App = () => {
             onSetStep={setStep}
         />}
         {step === 3 && <Results
+            results={answers}
             data={surveyData.data[activeQuestion]}
             numberOfQuestion={surveyData.data.length}
             activeQuestion={activeQuestion}
