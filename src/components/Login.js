@@ -13,7 +13,7 @@ const CssTextField = styled(TextField)({
         fontFamily: "'Montserrat', sans-serif",
     },
     '& label.Mui-focused': {
-        color: '#EE3A68',
+        color: 'rgba(238, 58, 104, 0.5)',
         fontFamily: "'Montserrat', sans-serif",
     },
     '& .MuiOutlinedInput-root': {
@@ -21,10 +21,10 @@ const CssTextField = styled(TextField)({
             borderColor: 'white',
         },
         '&:hover fieldset': {
-            borderColor: '#EE3A68',
+            borderColor: 'rgba(238, 58, 104, 0.5)',
         },
         '&.Mui-focused fieldset': {
-            borderColor: '#EE3A68',
+            borderColor: 'rgba(238, 58, 104, 0.5)',
         },
     },
 });
