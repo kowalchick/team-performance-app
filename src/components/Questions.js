@@ -52,11 +52,11 @@ const SuccessSlider = styled(Slider)(({ theme }) => ({
 const marks = [
     {
         value: 100,
-        label: 'I strongly agree',
+        label: 'I strongly disagree',
     },
     {
         value: 0,
-        label: 'I strongly disagree',
+        label: 'I strongly agree',
     },
 ];
 
@@ -87,7 +87,7 @@ const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onS
         if(activeQuestion < numberOfQuestions - 1) {
             onSetActiveQuestion(activeQuestion + 1);
         } else {
-            onSetStep(3);
+            onSetStep(4);
         }
     }
 

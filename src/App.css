@@ -8,6 +8,7 @@
     --gray: #C9CBCF;
     --blue: #3BA0EB;
     --white: #ffffff;
+    --violet: rgba(161, 0, 255, 0.5);
     --font-base: 'Montserrat', sans-serif;
     font-size: 16px;
 }
@@ -114,4 +115,6 @@ h1, h2, h3 {
     font-size: 1.75rem;
     font-weight: 500;
 }
+
+
 
