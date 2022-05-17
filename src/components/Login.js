@@ -11,20 +11,22 @@ const CssTextField = styled(TextField)({
     '& label': {
         color:'#C9CBCF',
         fontFamily: "'Montserrat', sans-serif",
+
     },
     '& label.Mui-focused': {
-        color: 'rgba(238, 58, 104, 0.5)',
+        color: 'rgba(161, 0, 255, 0.5)',
         fontFamily: "'Montserrat', sans-serif",
     },
     '& .MuiOutlinedInput-root': {
         '& fieldset': {
             borderColor: 'white',
+            backgroundColor:'white',
         },
         '&:hover fieldset': {
-            borderColor: 'rgba(238, 58, 104, 0.5)',
+            borderColor: 'rgba(161, 0, 255, 0.5)',
         },
         '&.Mui-focused fieldset': {
-            borderColor: 'rgba(238, 58, 104, 0.5)',
+            borderColor: 'rgba(161, 0, 255, 0.5)',
         },
     },
 });
@@ -35,6 +37,7 @@ const Login = ({onSetStep}) => {
     }
 
     const [values, setValues] = React.useState({
+        email:'',
         password: '',
         showPassword: false,
     });
@@ -52,13 +55,13 @@ const Login = ({onSetStep}) => {
 
                         <form className="box">
                             <div className="field">
-                                <FormControl sx={{ m: 1, width: '25ch', backgroundColor:'white'}} variant="outlined" color="secondary">
+                                <FormControl sx={{ m: 1, width: '25ch'}} variant="outlined">
                                     <CssTextField label="Email" id="outlined-adornment-email" />
                                 </FormControl>
                             </div>
 
                             <div className="field">
-                                <FormControl sx={{ m: 1, width: '25ch',backgroundColor:'white' }} variant="outlined" color="secondary">
+                                <FormControl sx={{ m: 1, width: '25ch'}} variant="outlined">
                                     <CssTextField
                                         label="Password"
                                         id="outlined-adornment-password"
