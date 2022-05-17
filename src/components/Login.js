@@ -56,7 +56,13 @@ const Login = ({onSetStep}) => {
                         <form className="box">
                             <div className="field">
                                 <FormControl sx={{ m: 1, width: '25ch'}} variant="outlined">
-                                    <CssTextField label="Email" id="outlined-adornment-email" />
+                                    <CssTextField
+                                        label="Email"
+                                        id="outlined-adornment-email"
+                                        autoComplete="off"
+                                        value={values.email}
+                                        onChange={handleChange('email')}
+                                    />
                                 </FormControl>
                             </div>
 
@@ -68,6 +74,7 @@ const Login = ({onSetStep}) => {
                                         type={values.showPassword ? 'text' : 'password'}
                                         value={values.password}
                                         onChange={handleChange('password')}
+                                        autoComplete="off"
                                     />
                                 </FormControl>
                             </div>
