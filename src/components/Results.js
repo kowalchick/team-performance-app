@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Chart from "./Chart";
 
 
-const Results = ({onAnswersCheck}) => {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:3001/dataAnswers", { method: "GET", redirect: "follow" })
-            .then((res) => res.json())
-            .then((json) => {
-                setData(json);
-            })
-            .catch((err) => console.log(err));
-    }, []);
+const Results = ({onAnswersCheck, dataAnswer}) => {
 
     return (
         <div className="card">
@@ -26,9 +16,9 @@ const Results = ({onAnswersCheck}) => {
                     <div className='content-box'>
                         <h2 className="thanks-subtitle">Find your results below</h2>
                         <Chart
-                            labels={data.length === 0 ? ["#EE3A68"] : data[0].labels}
-                            data1={data.length === 0 ? [0, 0, 0] : data[0].data[0].values}
-                            data2={data.length === 0 ? [0, 0, 0] : data[0].data[1].values}
+                            labels={dataAnswer[0].labels}
+                            data1={dataAnswer[0].data[0].values}
+                            data2={dataAnswer[0].data[1].values}
                         />
                     </div>
                     <button className="btn" onClick={onAnswersCheck}>Send results to my email</button>

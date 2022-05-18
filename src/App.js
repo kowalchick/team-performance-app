@@ -30,7 +30,7 @@ const App = () => {
         />}
         {step === 4 && <Results
             results={answers}
-            data={surveyData.data[activeQuestion]}
+            dataAnswer={surveyData.dataAnswer}
             numberOfQuestion={surveyData.data.length}
             activeQuestion={activeQuestion}
             onSetActiveQuestion={setActiveQuestion}
