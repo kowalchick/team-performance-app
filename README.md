@@ -19,9 +19,10 @@ Link to the design is available [here](https://www.figma.com/file/0OXyTxjtiuRtFh
 
 ### Styling libraries
 
-Material UI
+to style components: Material UI
+To show the data: ChartJS
 
-#### Running the app
+### Running the app
 
 To run the app: `npm start`
 
