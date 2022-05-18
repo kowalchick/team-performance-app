@@ -7,6 +7,8 @@ import { styled } from '@mui/material/styles';
 const CssTextField = styled(TextField)({
     '& .MuiInputBase-input': {
         fontFamily: "'Montserrat', sans-serif",
+        color: "black",
+        backgroundColor:'white',
     },
     '& label': {
         color:'#C9CBCF',
@@ -20,7 +22,6 @@ const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
         '& fieldset': {
             borderColor: 'white',
-            backgroundColor:'white',
         },
         '&:hover fieldset': {
             borderColor: 'rgba(161, 0, 255, 0.5)',
@@ -58,8 +59,9 @@ const Login = ({onSetStep}) => {
                                 <FormControl sx={{ m: 1, width: '25ch'}} variant="outlined">
                                     <CssTextField
                                         label="Email"
-                                        id="outlined-adornment-email"
+                                        id="outlined-basic"
                                         autoComplete="off"
+                                        type="email"
                                         value={values.email}
                                         onChange={handleChange('email')}
                                     />
@@ -70,7 +72,7 @@ const Login = ({onSetStep}) => {
                                 <FormControl sx={{ m: 1, width: '25ch'}} variant="outlined">
                                     <CssTextField
                                         label="Password"
-                                        id="outlined-adornment-password"
+                                        id="outlined-password-input"
                                         type={values.showPassword ? 'text' : 'password'}
                                         value={values.password}
                                         onChange={handleChange('password')}
