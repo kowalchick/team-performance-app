@@ -31,10 +31,6 @@ const App = () => {
         {step === 4 && <Results
             results={answers}
             dataAnswer={surveyData.dataAnswer}
-            numberOfQuestion={surveyData.data.length}
-            activeQuestion={activeQuestion}
-            onSetActiveQuestion={setActiveQuestion}
-            onSetStep={setStep}
             />}
     </div>
   );
