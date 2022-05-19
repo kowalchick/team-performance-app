@@ -1,6 +1,6 @@
 import React from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import Chart from "./Chart";
+import Chart from "../Chart/Chart";
 
 
 const Results = ({onAnswersCheck, dataAnswer}) => {

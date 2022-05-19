@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import './App.css';
 
-import Welcome from "./components/Welcome";
-import Questions from "./components/Questions";
+import Welcome from "./components/Welcome/Welcome";
+import Questions from "./components/Questions/Questions";
 import surveyData from "./data/db.json";
-import Results from "./components/Results";
-import Login from "./components/Login";
+import Results from "./components/Results/Results";
+import Login from "./components/Login/Login";
 
 const App = () => {
     const [step, setStep] = useState(1);
