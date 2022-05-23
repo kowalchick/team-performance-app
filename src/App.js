@@ -30,6 +30,7 @@ const App = () => {
         {step === 4 && <Results
             results={answers}
             dataAnswer={surveyData.dataAnswer}
+            dataAnswer2={surveyData.dataAnswer2}
             />}
     </div>
   );

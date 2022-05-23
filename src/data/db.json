@@ -51,5 +51,36 @@
         }
       ]
     }
+  ],
+  "dataAnswer2": [
+    {
+      "labels": [
+        [
+          "Question 1"
+        ],
+        [
+          "Question 2"
+        ],
+        [
+          "Question 3"
+        ]
+      ],
+      "data": [
+        {
+          "values": [
+            100,
+            20,
+            70
+          ]
+        },
+        {
+          "values": [
+            50,
+            75,
+            100
+          ]
+        }
+      ]
+    }
   ]
 }

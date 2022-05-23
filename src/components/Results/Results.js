@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Chart from "../Chart/Chart";
+import {ChartMobile} from "../Chart/ChartMobile";
 
+function useMediaQuery(query) {
+    const [matches, setMatches] = useState(false);
 
-const Results = ({onAnswersCheck, dataAnswer}) => {
+    useEffect(() => {
+        const media = window.matchMedia(query);
+        if (media.matches !== matches) {
+            setMatches(media.matches);
+        }
+        const listener = () => {
+            setMatches(media.matches);
+        };
+        media.addListener(listener);
+        return () => media.removeListener(listener);
+    }, [matches, query]);
+
+    return matches;
+}
+
+const Results = ({onAnswersCheck, dataAnswer,dataAnswer2}) => {
+
+    let isSmallWide = useMediaQuery('(max-width: 582px)')
+    let isBigWide = useMediaQuery('(min-width: 583px)')
 
     return (
         <div className="card">
@@ -15,11 +36,16 @@ const Results = ({onAnswersCheck, dataAnswer}) => {
                     </h1>
                     <div className='content-box'>
                         <h2 className="thanks-subtitle">Find your results below</h2>
-                        <Chart
+                        {isSmallWide && <ChartMobile
+                            labels={dataAnswer2[0].labels}
+                            data1={dataAnswer2[0].data[0].values}
+                            data2={dataAnswer2[0].data[1].values}
+                        />}
+                        {isBigWide && <Chart
                             labels={dataAnswer[0].labels}
                             data1={dataAnswer[0].data[0].values}
                             data2={dataAnswer[0].data[1].values}
-                        />
+                        />}
                     </div>
                     <button className="btn" onClick={onAnswersCheck}>Send results to my email</button>
                 </div>

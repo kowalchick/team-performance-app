@@ -3,7 +3,7 @@
 @import "fonts";
 
 $breakpoint-xs: 388px;
-$breakpoint-s: 760px;
+$breakpoint-s: 583px;
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -114,6 +114,7 @@ h1, h2, h3 {
   color: rgba(30, 1, 8, 0.7);
   font-size: 1.75rem;
   font-weight: 500;
+  padding-bottom: 1.5rem;
 }
 .sunnyIcon {
   color: $pink;
@@ -126,5 +127,16 @@ h1, h2, h3 {
   .sunnyIcon{
     display: none !important;
   }
+  .thanks {
+    font-weight: bold;
+    font-size: 2rem;
+    padding-bottom: 10px;
+  }
+  .thanks-subtitle {
+    color: rgba(30, 1, 8, 0.7);
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
 
 }
+
