@@ -8,7 +8,7 @@ const Welcome = ({onSurveyStart}) => {
                 <div className="content">
                     <h1 className="fancy">
                         Welcome
-                        <WbSunnyIcon sx={{ color: "#EE3A68", paddingLeft:"10px" }} />
+                        <WbSunnyIcon className="sunnyIcon" />
                     </h1>
                     <div className="content-box">
                         <h2 className="title">We Put You First</h2>

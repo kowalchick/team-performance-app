@@ -1,0 +1,130 @@
+@use "sass:color";
+@import "colors";
+@import "fonts";
+
+$breakpoint-xs: 388px;
+$breakpoint-s: 760px;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin:0;
+  padding: 0;
+}
+
+:root {
+  font-family: $font-base;
+  font-size: 16px;
+}
+html,
+body,
+#root {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  color: $main-black;
+
+}
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+
+}
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .card {
+    max-width: 800px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex:1;
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+}
+.description {
+  font-size: 1.25rem;
+  line-height: 1.3125rem;
+  font-family: $font-base;
+  font-weight: 500;
+  padding: 20px;
+}
+.content-box {
+  background-color: $light-pink;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+  padding: 30px;
+  margin:20px 20px 0 20px;
+}
+
+.btn{
+  font-family: $font-base;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 5px 15px;
+  background-color: $white;
+  color: $main-black;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3125rem;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin-top: 40px;
+  transition: color .2s ease-in-out, background-color .2s ease-in-out;
+  cursor: pointer;
+
+  &:hover{
+    box-shadow: rgba(238, 58, 104, 0.2) 0 5px 15px;
+  }
+}
+
+.control {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.fancy {
+  padding: 50px;
+
+  &:after {
+    content: "";
+    display: block;
+    border-bottom: $pink solid 5px;
+    width: 10%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+  }
+}
+.question-title {
+  text-transform: uppercase;
+  padding: 0 50px 30px 50px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.thanks {
+  font-weight: bold;
+  font-size: 2.25rem;
+  padding-bottom: 10px;
+}
+.thanks-subtitle {
+  color: rgba(30, 1, 8, 0.7);
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+.sunnyIcon {
+  color: $pink;
+  padding-left:10px;
+}
+.MuiSlider-markLabel{
+  color: red;
+}
+@media (max-width: $breakpoint-xs){
+  .sunnyIcon{
+    display: none !important;
+  }
+
+}

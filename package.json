@@ -15,12 +15,11 @@
     "cors": "^2.8.5",
     "emoji-picker-react": "^3.5.1",
     "express": "^4.18.1",
-    "node-sass": "^7.0.1",
     "nodemon": "^2.0.16",
     "react": "^18.1.0",
     "react-chartjs-2": "^4.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "^2.1.3",
+    "react-scripts": "^5.0.1",
     "serverless-http": "^3.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -48,7 +47,7 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.51.0"
+    "sass": "^1.52.1"
   },
   "optionalDependencies": {
     "fsevents": "^2.3.2"

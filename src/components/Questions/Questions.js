@@ -16,10 +16,16 @@ const myTheme = createTheme({
             contrastText: '#C9CBCF',
         }
     },
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 388,
+            md:1200,
+        },
+    },
 });
 
 const SuccessSlider = styled(Slider)(({ theme }) => ({
-    width: 350,
     color: myTheme.palette.primary.main,
     "& 	.MuiSlider-valueLabelOpen":{
         fontFamily: `'Montserrat', sans-serif `,
@@ -31,9 +37,19 @@ const SuccessSlider = styled(Slider)(({ theme }) => ({
     "& .MuiSlider-markLabel":{
         fontFamily: `'Montserrat', sans-serif `,
         fontWeight:`bold`,
-        fontSize: `1.125rem`,
+        fontSize:`1.125rem`,
+        [theme.breakpoints.between('xs', 'sm')]: {
+            fontSize:`0.8rem`,
+        },
         paddingTop: `20px`,
-        color: `${alpha(myTheme.palette.secondary.main,0.8)}`
+        color: `${alpha(myTheme.palette.secondary.main,0.8)}`,
+    },
+    "&.MuiSlider-root":{
+        margin: `0 100px 20px 100px`,
+        [theme.breakpoints.between('xs', 'sm')]: {
+            margin: `0 50px 20px 50px`,
+        },
+
     },
     "& .MuiSlider-thumb": {
         border:`solid 5px ${alpha(myTheme.palette.primary.main,1)}`,
@@ -99,7 +115,9 @@ const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onS
                     <div className="content-box">
                         <div className="control" ref={inputWrapper}>
                             <Box sx={{
-                                display: 'inline-block',
+                                display: 'flex',
+                                width: '100%',
+                                margin: 'auto',
                             }}>
                                 <SuccessSlider
                                     aria-label="Custom marks"
@@ -111,6 +129,7 @@ const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onS
                                     marks={marks}
                                     onChange={handleChange}
                                     aria-labelledby="input-slider"
+                                    sx={{flex:1}}
                                 />
                             </Box>
                         </div>
