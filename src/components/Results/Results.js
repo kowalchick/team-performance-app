@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { styled } from '@mui/material/styles';
 import {Chart} from "../Chart/ChartComponent";
+import {colors} from "../../settings/colors";
+
+const StyledFavoriteIcon = styled(FavoriteIcon)({
+    color: colors.pink,
+    paddingLeft: "10px",
+  });
 
 function useMediaQuery(query) {
     const [matches, setMatches] = useState(window.matchMedia(query).matches);
@@ -28,7 +35,7 @@ const Results = ({ onAnswersCheck, dataAnswer, dataAnswer2 }) => {
                 <div className="content">
                     <h1 className="thanks">
                         Thank you for your time
-                        <FavoriteIcon sx={{ color: "#EE3A68", paddingLeft: "10px" }} />
+                        <StyledFavoriteIcon />
                     </h1>
                     <div className='content-box'>
                         <h2 className="thanks-subtitle">Find your results below</h2>
