@@ -31,12 +31,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### Backend info
 
-I mocked the server data, because I had issues with deploy this project on netlify.
+I mocked the server data to easily deploy this project on netlify.\
 All data used in this app can be find in db.json file.
 
 ### Additional info
 
-I will work on the state of the app to collect user's data provided including validation.\
-I am working on tests now. Some of unit ones were added already.
-The plan is to use firebase or redux to manage the state of the app.
+I'll be focusing on developing the app's state to gather the data provided by users.\ 
+Currently, I'm working on writing tests and I've already added some unit tests.\
+The strategy going forward is to use either Firebase or Redux for state management within the app.
+
+### 2023 Update
+
+After taking a break, I returned to the project, refactored the code, and implemented the planned form validation.\
 
