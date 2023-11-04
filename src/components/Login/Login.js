@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 import { FormControl, TextField } from "@mui/material";
 import { styled } from '@mui/material/styles';
+import { colors, fontBase } from '../../settings/styles';
 
 const CssTextField = styled(TextField)({
     '& .MuiInputBase-input': {
-        fontFamily: "'Montserrat', sans-serif",
-        color: "black",
-        backgroundColor: 'white',
+        fontFamily: fontBase,
+        color: colors.mainBlack,
+        backgroundColor: colors.white,
     },
     '& label': {
-        color: '#C9CBCF',
-        fontFamily: "'Montserrat', sans-serif",
+        color: colors.gray,
+        fontFamily: fontBase,
     },
     '& label.Mui-focused': {
-        color: 'rgba(161, 0, 255, 0.5)',
-        fontFamily: "'Montserrat', sans-serif",
+        color: colors.violet,
+        fontFamily: fontBase,
     },
     '& .MuiOutlinedInput-root': {
         '& fieldset': {
-            borderColor: 'white',
+            borderColor: colors.white,
         },
         '&:hover fieldset': {
-            borderColor: 'rgba(161, 0, 255, 0.5)',
+            borderColor: colors.violet,
         },
         '&.Mui-focused fieldset': {
-            borderColor: 'rgba(161, 0, 255, 0.5)',
+            borderColor: colors.violet,
         },
     },
 });

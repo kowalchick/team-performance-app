@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { styled } from '@mui/material/styles';
 import {Chart} from "../Chart/ChartComponent";
-import {colors} from "../../settings/colors";
+import {colors} from "../../settings/styles";
 
 const StyledFavoriteIcon = styled(FavoriteIcon)({
     color: colors.pink,

@@ -9,7 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import {colors} from "../../settings/colors";
+import {colors, fontBase} from "../../settings/styles";
 
 ChartJS.register(
   CategoryScale,
@@ -21,7 +21,7 @@ ChartJS.register(
 );
 
 const fontOptions = {
-  family: "'Montserrat', sans-serif",
+  family: fontBase,
 };
 
 const baseOptions = {

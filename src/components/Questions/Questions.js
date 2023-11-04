@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import {Box, Slider} from '@mui/material';
 import { alpha, styled, createTheme } from "@mui/material/styles";
-import { colors } from '../../settings/colors';
+import { colors, fontBase } from '../../settings/styles';
 
 const myTheme = createTheme({
     palette: {
@@ -28,14 +28,14 @@ const SuccessSlider = styled(Slider)(({ theme }) => ({
     flex:1,
     color: myTheme.palette.primary.main,
     "& 	.MuiSlider-valueLabelOpen":{
-        fontFamily: `'Montserrat', sans-serif `,
+        fontFamily: fontBase,
         fontSize: `1.125rem`,
         backgroundColor: `${alpha(myTheme.palette.secondary.light,1)}`,
         color: `${alpha(myTheme.palette.primary.main,1)}`,
         border:`dashed 2px ${alpha(myTheme.palette.primary.main,1)}`
     },
     "& .MuiSlider-markLabel":{
-        fontFamily: `'Montserrat', sans-serif `,
+        fontFamily: fontBase,
         fontWeight:`bold`,
         fontSize:`1.125rem`,
         [theme.breakpoints.between('xs', 'sm')]: {
