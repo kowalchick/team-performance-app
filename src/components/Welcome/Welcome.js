@@ -12,7 +12,7 @@ const Welcome = ({onSurveyStart}) => {
                     </h1>
                     <div className="content-box">
                         <h2 className="title">We Put You First</h2>
-                        <p className="description">
+                        <p className="description" style={{ lineHeight: '1.9rem' }}>
                             Answering those short questions you will help us
                             understand better the factors that determine your motivation
                             and make our organization a better place.
