@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 
 import {Box, Slider} from '@mui/material';
 import { alpha, styled, createTheme } from "@mui/material/styles";
+import { colors } from '../../settings/colors';
 
 const myTheme = createTheme({
     palette: {
         primary: {
-            main: '#EE3A68',
+            main: colors.pink,
         },
         secondary: {
-            light: '#fff',
-            main: '#1E0108',
-            contrastText: '#C9CBCF',
+            light: colors.white,
+            main: colors.mainBlack,
+            contrastText: colors.gray,
         }
     },
     breakpoints: {
@@ -24,6 +25,7 @@ const myTheme = createTheme({
 });
 
 const SuccessSlider = styled(Slider)(({ theme }) => ({
+    flex:1,
     color: myTheme.palette.primary.main,
     "& 	.MuiSlider-valueLabelOpen":{
         fontFamily: `'Montserrat', sans-serif `,
@@ -63,6 +65,12 @@ const SuccessSlider = styled(Slider)(({ theme }) => ({
     }
 }));
 
+const StyledBox = styled(Box)({
+    display: 'flex',
+    width: '100%',
+    margin: 'auto',
+  });
+
 const marks = [
     {
         value: 100,
@@ -81,7 +89,7 @@ function valuetext(value) {
 const Questions = ({ data, onAnswerUpdate, numberOfQuestions, activeQuestion, onSetActiveQuestion, onSetStep }) => {
     const [selected, setSelected] = useState(50);
 
-    const handleSliderChange = (event, newValue) => {
+    const handleSliderChange = (_event, newValue) => {
         setSelected(newValue);
     };
 
@@ -102,11 +110,7 @@ const Questions = ({ data, onAnswerUpdate, numberOfQuestions, activeQuestion, on
                     <h2 className="question-title">{data.question}</h2>
                     <div className="content-box">
                         <div className="control">
-                            <Box sx={{
-                                display: 'flex',
-                                width: '100%',
-                                margin: 'auto',
-                            }}>
+                            <StyledBox>
                                 <SuccessSlider
                                     aria-label="Custom marks"
                                     defaultValue={50}
@@ -117,9 +121,8 @@ const Questions = ({ data, onAnswerUpdate, numberOfQuestions, activeQuestion, on
                                     marks={marks}
                                     onChange={handleSliderChange}
                                     aria-labelledby="input-slider"
-                                    sx={{flex:1}}
                                 />
-                            </Box>
+                            </StyledBox>
                         </div>
                     </div>
                     <button className="btn" onClick={nextClickHandler}>Next question</button>
