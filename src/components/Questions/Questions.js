@@ -1,9 +1,7 @@
-import React, {useEffect, useRef} from "react";
+import React, { useState } from 'react';
 
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import { alpha, styled } from "@mui/material/styles";
-import { createTheme } from '@mui/material/styles';
+import {Box, Slider} from '@mui/material';
+import { alpha, styled, createTheme } from "@mui/material/styles";
 
 const myTheme = createTheme({
     palette: {
@@ -76,36 +74,26 @@ const marks = [
     },
 ];
 
-function valuetext(value: number) {
+function valuetext(value) {
     return `${value}`;
 }
 
+const Questions = ({ data, onAnswerUpdate, numberOfQuestions, activeQuestion, onSetActiveQuestion, onSetStep }) => {
+    const [selected, setSelected] = useState(50);
 
-const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onSetActiveQuestion, onSetStep}) => {
+    const handleSliderChange = (event, newValue) => {
+        setSelected(newValue);
+    };
 
-    const [selected, setSelected] = React.useState(50); //value, setValue
-    const inputWrapper = useRef();
-
-    useEffect(() => {
-        const findCheckedInput = inputWrapper.current.querySelector('input:checked');
-        if(findCheckedInput) {
-            findCheckedInput.checked = false;
-        }
-    }, [data]);
-
-    const handleChange = (event, newSelection) => {
-        setSelected(newSelection);
-    }
-
-    const nextClickHandler = (e) => {
+    const nextClickHandler = () => {
         onAnswerUpdate(prevState => [...prevState, { q: data.question, a: selected }]);
         setSelected(50);
-        if(activeQuestion < numberOfQuestions - 1) {
+        if (activeQuestion < numberOfQuestions - 1) {
             onSetActiveQuestion(activeQuestion + 1);
         } else {
             onSetStep(4);
         }
-    }
+    };
 
     return (
         <div className="card">
@@ -113,7 +101,7 @@ const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onS
                 <div className="content">
                     <h2 className="question-title">{data.question}</h2>
                     <div className="content-box">
-                        <div className="control" ref={inputWrapper}>
+                        <div className="control">
                             <Box sx={{
                                 display: 'flex',
                                 width: '100%',
@@ -127,7 +115,7 @@ const Questions = ({data, onAnswerUpdate, numberOfQuestions, activeQuestion, onS
                                     step={1}
                                     valueLabelDisplay="auto"
                                     marks={marks}
-                                    onChange={handleChange}
+                                    onChange={handleSliderChange}
                                     aria-labelledby="input-slider"
                                     sx={{flex:1}}
                                 />
