@@ -1,91 +1,109 @@
-import React from 'react';
-
-import {FormControl} from "@mui/material";
-import TextField from '@mui/material/TextField';
+import React, { useState } from 'react';
+import { FormControl, TextField} from "@mui/material";
 import { styled } from '@mui/material/styles';
+import { colors, fontBase } from '../../settings/styles';
+import { validateAuth } from '../../utils/validation';
 
 const CssTextField = styled(TextField)({
     '& .MuiInputBase-input': {
-        fontFamily: "'Montserrat', sans-serif",
-        color: "black",
-        backgroundColor:'white',
+        fontFamily: fontBase,
+        color: colors.mainBlack,
+        backgroundColor: colors.white,
     },
     '& label': {
-        color:'#C9CBCF',
-        fontFamily: "'Montserrat', sans-serif",
-
+        color: colors.gray,
+        fontFamily: fontBase,
     },
     '& label.Mui-focused': {
-        color: 'rgba(161, 0, 255, 0.5)',
-        fontFamily: "'Montserrat', sans-serif",
+        color: colors.violet,
+        fontFamily: fontBase,
     },
     '& .MuiOutlinedInput-root': {
         '& fieldset': {
-            borderColor: 'white',
+            borderColor: colors.white,
         },
         '&:hover fieldset': {
-            borderColor: 'rgba(161, 0, 255, 0.5)',
+            borderColor: colors.violet,
         },
         '&.Mui-focused fieldset': {
-            borderColor: 'rgba(161, 0, 255, 0.5)',
+            borderColor: colors.violet,
         },
     },
 });
 
-const Login = ({onSetStep}) => {
-    const startQuestionsHandler = (e) => {
-        onSetStep(3);
-    }
-
-    const [values, setValues] = React.useState({
-        email:'',
+const Login = ({ onSetStep }) => {
+    const [values, setValues] = useState({
+        email: '',
         password: '',
-        showPassword: false,
     });
 
+    const [errors, setErrors] = useState({});
+
     const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
+        setValues(values => ({ ...values, [prop]: event.target.value }));
+        setErrors(errors => ({ ...errors, [prop]: '' }));
     };
 
-    return(
-        <div className="card">
-            <div className="card-content">
-                <div className="content">
-                    <h1 className="fancy">Login</h1>
-                    <div className="content-box">
+    const startQuestionsHandler = (event) => {
+        event.preventDefault();
+        const validationErrors = validateAuth(values.email, values.password);
+        setErrors(validationErrors);
+        
+        if (validationErrors.ok) {
+            onSetStep(3);
+        }
+    }
 
-                        <form className="box">
-                            <div className="field">
-                                <FormControl sx={{ m: 1, width: '25ch'}} variant="outlined">
-                                    <CssTextField
-                                        label="Email"
-                                        id="outlined-basic"
-                                        autoComplete="off"
-                                        type="email"
-                                        value={values.email}
-                                        onChange={handleChange('email')}
-                                    />
-                                </FormControl>
-                            </div>
-
-                            <div className="field">
-                                <FormControl sx={{ m: 1, width: '25ch'}} variant="outlined">
-                                    <CssTextField
-                                        label="Password"
-                                        id="outlined-password-input"
-                                        type={values.showPassword ? 'text' : 'password'}
-                                        value={values.password}
-                                        onChange={handleChange('password')}
-                                        autoComplete="off"
-                                    />
-                                </FormControl>
-                            </div>
-                        </form>
-                    </div>
-                    <button className="btn" onClick={startQuestionsHandler}>Start Survey</button>
+    return (
+      <div className="card">
+        <div className="card-content">
+          <div className="content">
+            <h1 className="fancy">Login</h1>
+            <div className="content-box">
+              <form className="box" onSubmit={startQuestionsHandler} noValidate>
+                <div className="field">
+                  <FormControl
+                    fullWidth
+                    variant="outlined"
+                    margin="normal"
+                    error={!!errors.email}
+                  >
+                    <CssTextField
+                      label="Email"
+                      type="email"
+                      value={values.email}
+                      error={!!errors.email}
+                      onChange={handleChange("email")}
+                      helperText={errors.email}
+                    />
+                  </FormControl>
                 </div>
+                <div className="field">
+                  <FormControl
+                    fullWidth
+                    variant="outlined"
+                    margin="normal"
+                    error={!!errors.password}
+                  >
+                    <CssTextField
+                      label="Password"
+                      type="password"
+                      value={values.password}
+                      onChange={handleChange("password")}
+                      autoComplete="off"
+                      helperText={errors.password}
+                      error={!!errors.password}
+                    />
+                  </FormControl>
+                </div>
+                <button type="submit" className="btn">
+                  Start Survey
+                </button>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     );
 }
 
