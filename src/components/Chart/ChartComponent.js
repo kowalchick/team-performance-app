@@ -9,6 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import {colors} from "../../settings/colors";
 
 ChartJS.register(
   CategoryScale,
@@ -41,8 +42,7 @@ const baseOptions = {
   },
 };
 
-export function Chart({ labels, data1, data2, isMobile }) {
-
+const generateChartConfig = (isMobile, labels, data1, data2) => {
   const options = {
     ...baseOptions,
     aspectRatio: isMobile ? 1 : undefined,
@@ -63,16 +63,24 @@ export function Chart({ labels, data1, data2, isMobile }) {
       {
         label: "My answers",
         data: data1,
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        backgroundColor: colors.pinkie,
       },
       {
         label: "My team answers",
         data: data2,
-        backgroundColor: "rgba(161, 0, 255, 0.5)",
+        backgroundColor: colors.violet,
       },
     ],
   };
 
+  return { options, data };
+};
+
+
+export function Chart({ labels, data1, data2, isMobile }) {
+  const { options, data } = React.useMemo(() => {
+    return generateChartConfig(isMobile, labels, data1, data2);
+  }, [isMobile, labels, data1, data2]);
+
   return <Bar options={options} data={data} />;
 }
-
