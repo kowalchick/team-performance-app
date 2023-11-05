@@ -1,8 +1,9 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Login from '../Login';
 
 const mockedSetValues = jest.fn
+const mockedOnSetStep = jest.fn();
 
 describe("LoginComponent",()=> {
 
@@ -59,4 +60,32 @@ describe("LoginComponent",()=> {
         fireEvent.mouseOver(inputElement)
         expect(inputElement).toBeVisible(`borderColor: 'rgba(161, 0, 255, 0.5)'`);
     });
+
+    it('displays error text when a too short password is provided', async () => {
+        render(<Login onSetStep={mockedOnSetStep} />);
+        const inputElement = screen.getByLabelText(/Password/i);
+        const submitButton = screen.getByRole('button', { name: /start survey/i });
+    
+        fireEvent.change(inputElement, { target: { value: "123" } });
+        fireEvent.click(submitButton);
+    
+        await waitFor(() => {
+          const errorText = screen.getByText(/password must be at least 6 characters long/i);
+          expect(errorText).toBeInTheDocument();
+        });
+      });
+
+      it('displays error text when an invalid email is provided', async () => {
+        render(<Login onSetStep={mockedOnSetStep} />);
+        const inputElement = screen.getByLabelText(/Email/i);
+        const submitButton = screen.getByRole('button', { name: /start survey/i });
+    
+        fireEvent.change(inputElement, { target: { value: "invalidemail" } });
+        fireEvent.click(submitButton);
+    
+        await waitFor(() => {
+          const errorText = screen.getByText(/invalid email address/i);
+          expect(errorText).toBeInTheDocument();
+        });
+      });
 })
