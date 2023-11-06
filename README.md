@@ -28,7 +28,9 @@ To run the app: `npm start`.
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Jest tests
 
+To run tests: `npm run test`.
 ### Backend info
 
 I mocked the server data to easily deploy this project on netlify.\
