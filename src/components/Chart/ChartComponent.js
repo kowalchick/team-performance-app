@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,9 +7,9 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import {colors, fontBase} from "../../settings/styles";
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+import { colors, fontBase } from "../../settings/styles";
 
 ChartJS.register(
   CategoryScale,
@@ -27,26 +27,31 @@ const fontOptions = {
 const baseOptions = {
   scales: {
     x: { ticks: { font: fontOptions } },
-    y: { ticks: { font: fontOptions } }
+    y: { ticks: { font: fontOptions } },
   },
   responsive: true,
   plugins: {
     tooltip: {
       callbacks: {
-        title: (context) => context[0].label.replaceAll(',', ' '),
-      }
+        title: (context) => context[0].label.replaceAll(",", " "),
+      },
     },
     legend: {
-      labels: { font: fontOptions }
+      labels: { font: fontOptions },
     },
   },
 };
 
-const generateChartConfig = (isMobile, labels, data1, data2) => {
+const generateChartConfig = (
+  isMobile,
+  labels,
+  userAnswersData,
+  teamAnswersData
+) => {
   const options = {
     ...baseOptions,
     aspectRatio: isMobile ? 1 : undefined,
-    indexAxis: isMobile ? 'y' : 'x',
+    indexAxis: isMobile ? "y" : "x",
     plugins: {
       ...baseOptions.plugins,
       legend: {
@@ -54,7 +59,7 @@ const generateChartConfig = (isMobile, labels, data1, data2) => {
         position: isMobile ? "bottom" : "top",
       },
     },
-    elements: isMobile ? { bar: { borderWidth: 2 } } : {}
+    elements: isMobile ? { bar: { borderWidth: 2 } } : {},
   };
 
   const data = {
@@ -62,12 +67,12 @@ const generateChartConfig = (isMobile, labels, data1, data2) => {
     datasets: [
       {
         label: "My answers",
-        data: data1,
+        data: userAnswersData,
         backgroundColor: colors.pinkie,
       },
       {
         label: "My team answers",
-        data: data2,
+        data: teamAnswersData,
         backgroundColor: colors.violet,
       },
     ],
@@ -76,11 +81,15 @@ const generateChartConfig = (isMobile, labels, data1, data2) => {
   return { options, data };
 };
 
-
-export function Chart({ labels, data1, data2, isMobile }) {
+export function Chart({ labels, userAnswersData, teamAnswersData, isMobile }) {
   const { options, data } = React.useMemo(() => {
-    return generateChartConfig(isMobile, labels, data1, data2);
-  }, [isMobile, labels, data1, data2]);
+    return generateChartConfig(
+      isMobile,
+      labels,
+      userAnswersData,
+      teamAnswersData
+    );
+  }, [isMobile, labels, userAnswersData, teamAnswersData]);
 
   return <Bar options={options} data={data} />;
 }

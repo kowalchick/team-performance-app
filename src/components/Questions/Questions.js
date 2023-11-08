@@ -110,7 +110,7 @@ const Questions = ({
   const nextClickHandler = () => {
     onAnswerUpdate((prevState) => [
       ...prevState,
-      { q: data.question, a: selected },
+      { questionId: activeQuestion, value: selected },
     ]);
     setSelected(50);
     if (activeQuestion < numberOfQuestions - 1) {

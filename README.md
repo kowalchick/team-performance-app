@@ -44,5 +44,6 @@ The strategy going forward is to use either Firebase or Redux for state manageme
 
 ### 2023 Update
 
-After taking a break, I returned to the project, refactored the code, and implemented the planned form validation.\
+I took a break and when I came back to the project, I cleaned up the code and added the form validation for Login page I had in mind.\
+Plus, I added a feature that preserves state management, ensuring all user's answers accurately display in the final results chart. 
 
