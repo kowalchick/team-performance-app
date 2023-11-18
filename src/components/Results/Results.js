@@ -48,9 +48,6 @@ const Results = ({ results, dataAnswer, dataAnswer2 }) => {
               isMobile={isMobile}
             />
           </div>
-          <button className="btn">
-            Send results to my email
-          </button>
         </div>
       </div>
     </div>
